@@ -1,0 +1,14 @@
+{
+  "name": "tableland",
+  "version": "1.0.0",
+  "description": "internal package for tableland",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anjanah07",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
