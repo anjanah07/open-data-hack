@@ -1,11 +1,16 @@
 "use client";
 
 import Button from "@/components/common/button";
-import React from "react";
+import React, { useState } from "react";
+
+import { TProgress, uploadFile } from "lighthouse";
 
 type pageProps = {};
 
-const page: React.FC<pageProps> = () => {
+const Page: React.FC<pageProps> = () => {
+  const [file, setFile] = useState<File | undefined>(undefined);
+  const [progress, setProgress] = useState<number>(0);
+
   return (
     <div className="w-full h-screen">
       <div className="h-3/4">
@@ -24,14 +29,32 @@ const page: React.FC<pageProps> = () => {
           Store any media files,folders or data archives with youe colleagues
           via PC
         </div>
+        <div>Progress: {progress}</div>
+
         <div>
+          <input
+            type="file"
+            name="file"
+            id="file"
+            onChange={(e) => {
+              if (!e.target.files?.[0]) return alert("No file selected");
+              console.log({ url: URL.createObjectURL(e.target.files?.[0]) });
+              setFile(e.target.files?.[0]);
+            }}
+          />
           <Button
             className="bg-black text-white text-sm font-normal p-4"
-            onClick={() => alert("todo")}
+            onClick={() => {
+              if (!file) return alert("No file selected");
+              uploadFile(file, (prog: TProgress) => {
+                console.log({ prog });
+                // setProgress(prog);
+              });
+            }}
           />
         </div>
       </div>
     </div>
   );
 };
-export default page;
+export default Page;
