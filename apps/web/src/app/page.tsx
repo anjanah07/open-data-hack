@@ -1,11 +1,13 @@
-"use client";
-
 import Button from "@/components/common/button";
 import React from "react";
+import { getResults } from "tableland";
+import getResult from "./getResults";
 
 type pageProps = {};
 
-const page: React.FC<pageProps> = () => {
+const Page = async () => {
+  const res = await getResult();
+  console.log({ res: res?.[0]?.counter });
   return (
     <div className="w-full h-screen">
       <div className="h-3/4">
@@ -24,14 +26,18 @@ const page: React.FC<pageProps> = () => {
           Store any media files,folders or data archives with youe colleagues
           via PC
         </div>
+        <div>Counter: {res?.[0]?.counter}</div>
         <div>
-          <Button
+          {/* <Button
             className="bg-black text-white text-sm font-normal p-4"
-            onClick={() => alert("todo")}
-          />
+            // onClick={() => getResult()}
+          /> */}
+          <form action={getResult}>
+            <button type="submit">Add to Cart</button>
+          </form>
         </div>
       </div>
     </div>
   );
 };
-export default page;
+export default Page;
