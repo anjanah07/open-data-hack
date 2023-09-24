@@ -1,0 +1,19 @@
+{
+  "name": "tableland",
+  "version": "1.0.0",
+  "description": "internal package for tableland",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anjanah07",
+  "license": "ISC",
+  "dependencies": {
+    "@tableland/sdk": "^4.5.1",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
+    "express": "^4.18.2",
+    "typescript": "^5.2.2"
+  }
+}

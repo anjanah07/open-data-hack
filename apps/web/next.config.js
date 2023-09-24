@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  transpilePackages: ["tableland"],
+  experimental: {
+    serverActions: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
